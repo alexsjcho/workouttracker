@@ -52,6 +52,10 @@
                 </div>
               </div>
             <% else %>
+
+<!-- Can remove subdomain object later on-->
+  <% if has_subdomain || verify_subdomain_presence %>
+
             <p class="control">
               <%= link_to "Sign In", new_user_session_path, class:"navbar-item button" %>
             </p>
@@ -65,6 +69,9 @@
       </div>
     </div>
   </nav>
+
+<!-- Can remove this yield section later on-->
+  <%= yield :hero %>
 
   <section class="section">
     <div class="container">
@@ -83,4 +90,5 @@
   </footer>
 
   </body>
+  <% end %>
 </html>

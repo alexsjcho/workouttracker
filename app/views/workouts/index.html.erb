@@ -1,32 +1,27 @@
-<% if !user_signed_in? %>
-<% content_for :hero do %>
-<section class ="hero is-medium is-dark home-hero has-text-centered">
-  <div class ="hero-body">
-    <div class ="container">
-      <div class = "container">
-        <h1 class="title">
-          Weclome to <% Rails.configuration.application_name %>!
-        </h1>
-        <h2 class="subtitle">
-          Host your own workouts and share your results together.
-        </h2>
-      </div>
-    </div>
-  </section>
+<% content_for :page do %>
+<h1 class="title is-1"> <%= @workout.title %></h1>
+<p><%= verbose_date(@workout.date) %></p>
+
+<table class="table">
+  <thead>
+<tr>
+  <th> Exercises </th>
+  <th> # of Sets </th>
+  <th> Weight </th>
+</tr>
+</thead>
+<tbody>
+  <% @workout.exercises.each do |exercise| %>
+  <tr>
+    <th> Exercises </th>
+    <th> # of Sets </th>
+    <th> Weight </th>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+
+<%= link_to 'Edit Workout', edit_workout_path(@workout),class: "button mt4" if workout_author(@workout) %>
   <% end %>
 
-  <% else %>
-    <% content_for :hero do %>
-    <section class ="is-dark home-hero has-text-centered">
-      <div class ="hero-body">
-        <div class ="container">
-          <div class = "container">
-            <h1 class="title">
-              Weclome to <% current_user.name %>!
-            </h1>
-            <h2 class="subtitle">
-              Host your own workouts and share your results together.
-            </h2>
-          </div>
-        </div>
-      </section>
+<% render 'page_template' %>

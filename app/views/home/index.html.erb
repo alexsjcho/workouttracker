@@ -32,4 +32,34 @@
         <div class="hero-foot">
           <nav class="tabs">
             <div class="container">
+              <ul>
+                <li><% link_to "View all Workouts", workouts_path %></li>
+              </ul>
+            </div>
+          </nav>
       </section>
+        <% end %>
+      <% end %>
+
+<div class="colums is-multiline">
+  <div class ="column">
+    <div class="content has-text-centered">
+      <% if !user_signed_in? %>
+      <p class="subtitle is-4">Ready to get in shape? <br/> Start hosting your own workouts and exercises now. </p>
+      <%if has_subdomain %>
+      <% link_to "Let's do this", workouts_path, class:'button is-dark is-large' %>
+      <% else %>
+      <%= link_to "Let's do this", new_user_registration_path, class:'button is-dark is-large'%>
+      <% end %>
+    <% else %>
+
+    <h3> Recent workouts </h3>
+    <div class="columns is-multiline">
+      <% @workouts.each do |workout| %>
+      <%= render 'workouts/workout', workout: workout %>
+        <% end %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
