@@ -1,4 +1,3 @@
-![https://i.imgur.com/cBd9eM2.jpg](https://i.imgur.com/cBd9eM2.jpg)
 
 Welcome to my 13th Let's Build: With Ruby on Rails. This build will feature a multitenancy workout app which uses a popular gem called Apartment, nested attributes, and Vue.js integration.
 
