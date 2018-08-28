@@ -3,3 +3,8 @@ class HomeController < ApplicationController
     @users = User.all
   end
 end
+
+class HomeController < ApplicationController
+  def show
+  end
+end

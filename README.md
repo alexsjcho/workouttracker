@@ -64,6 +64,7 @@ This generates a migration that looks like the following:
 
 ```ruby
 class AddSubdomainToUsers < ActiveRecord::Migration[5.2]
+  extend Devise::Models
   def change
     add_column :users, :subdomain, :string
   end

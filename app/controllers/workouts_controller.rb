@@ -16,7 +16,6 @@ before_action :authenticate_user!
   # GET /workouts/new
   def new
     @workout = Workout.new
-    @workouts = Workout.all
     @workout.exercises.build
     @workout.user_id = current_user.id
   end
