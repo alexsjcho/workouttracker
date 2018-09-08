@@ -1,5 +1,4 @@
 require 'sidekiq/web'
-devise_for :controllers, users:{ omniauth_callbacks: 'users/omniauth_callbacks' }
 
 Rails.application.routes.draw do
   get 'login', to: redirect('/auth/google_oauth2'), as: 'login'
@@ -12,19 +11,20 @@ Rails.application.routes.draw do
   root to: "home#show"
 end
 
-  resources :exercises
 class Subdomain
   def self.matches?(request)
-subdomains = %w{www admin}
-request.subdomain.present? && !subdomains.include?(request.subdomain)
+    resources :exercises
+    subdomains = %w{www admin}
+    request.subdomain.present? && !subdomains.include?(request.subdomain)
   end
 
-constraints Subdomain do
+constants Subdomain do
   resources :workouts
 
 end
 
-  devise_for :users
+def
+  devise_for users:{ omniauth_callbacks: 'users/omniauth_callbacks' }, controllers:
   root to: 'home#index'
-
-end
+  end
+end 

@@ -5,7 +5,7 @@ after_create :create_tenant
 after_destroy :delete_tenant
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, request_keys:[:subdomain]
-         :omniauthable, :omniauth_providers => [:google_oauth2]
+
   validates :email, uniqueness:true
   has_many :workouts, dependent: :destroy
 
@@ -32,4 +32,3 @@ end
       user.refresh_token = auth.credentials.refresh_token
     end
   end
-end
